@@ -1,0 +1,15 @@
+long getWays(int n, int c_count, long* c) {
+    long i, j;
+    long table[n + 1];
+    
+    for (i = 0; i <= n; i++){
+        table[i] = 0;
+    }
+    table[0] = 1;
+    for(i = 0; i < c_count; i++){
+        for(j = c[i]; j <= n; j++){
+            table[j] += table[j - c[i]];
+        }
+    }
+    return table[n];
+}
